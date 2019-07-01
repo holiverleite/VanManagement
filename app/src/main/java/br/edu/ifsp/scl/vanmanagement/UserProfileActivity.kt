@@ -16,12 +16,14 @@ class UserProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_profile)
+    }
 
+    fun didTapNextButton(view: View) {
+        val departureLocationIntent = Intent(this, DeparturePointActivity::class.java)
+        startActivity(departureLocationIntent)
     }
 
     fun changePicture(view: View) {
-        Log.v("a","sssss")
-
         //check runtime permission
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
             if (checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE) ==
@@ -69,7 +71,7 @@ class UserProfileActivity : AppCompatActivity() {
     //handle result of picked image
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (resultCode == Activity.RESULT_OK && requestCode == IMAGE_PICK_CODE){
-            edit.setImageURI(data?.data)
+            profile.setImageURI(data?.data)
         }
     }
 
