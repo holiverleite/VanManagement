@@ -1,4 +1,4 @@
-package br.edu.ifsp.scl.vanmanagement
+package br.edu.ifsp.scl.vanmanagement.CreateProfile
 
 import android.app.Activity
 import android.content.Intent
@@ -8,10 +8,13 @@ import android.location.Address
 import android.location.Geocoder
 import android.location.Location
 import android.os.Bundle
-import android.support.design.widget.FloatingActionButton
 import android.support.v4.app.ActivityCompat
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.view.View
+import br.edu.ifsp.scl.vanmanagement.Home.HomeActivity
+import br.edu.ifsp.scl.vanmanagement.Home.HomeAdapter
+import br.edu.ifsp.scl.vanmanagement.R
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException
 import com.google.android.gms.common.GooglePlayServicesRepairableException
 import com.google.android.gms.common.api.ResolvableApiException
@@ -122,7 +125,9 @@ class DeparturePointActivity : AppCompatActivity(), OnMapReadyCallback,
         if (ActivityCompat.checkSelfPermission(this,
                 android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this,
-                arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION), LOCATION_PERMISSION_REQUEST_CODE)
+                arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),
+                LOCATION_PERMISSION_REQUEST_CODE
+            )
             return
         }
 
@@ -178,7 +183,8 @@ class DeparturePointActivity : AppCompatActivity(), OnMapReadyCallback,
                 android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this,
                 arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION),
-                LOCATION_PERMISSION_REQUEST_CODE)
+                LOCATION_PERMISSION_REQUEST_CODE
+            )
             return
         }
         fusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, null /* Looper */)
@@ -207,7 +213,8 @@ class DeparturePointActivity : AppCompatActivity(), OnMapReadyCallback,
                     // Show the dialog by calling startResolutionForResult(),
                     // and check the result in onActivityResult().
                     e.startResolutionForResult(this@DeparturePointActivity,
-                        REQUEST_CHECK_SETTINGS)
+                        REQUEST_CHECK_SETTINGS
+                    )
                 } catch (sendEx: IntentSender.SendIntentException) {
                     // Ignore the error.
                 }
@@ -219,11 +226,19 @@ class DeparturePointActivity : AppCompatActivity(), OnMapReadyCallback,
         val builder = PlacePicker.IntentBuilder()
 
         try {
-            startActivityForResult(builder.build(this@DeparturePointActivity), PLACE_PICKER_REQUEST)
+            startActivityForResult(builder.build(this@DeparturePointActivity),
+                PLACE_PICKER_REQUEST
+            )
         } catch (e: GooglePlayServicesRepairableException) {
             e.printStackTrace()
         } catch (e: GooglePlayServicesNotAvailableException) {
             e.printStackTrace()
         }
+    }
+
+    fun didTapNextButton(view: View) {
+//        val homeActivityIntent = Intent(this, HomeActivity::class.java)
+//        startActivity(homeActivityIntent)
+        finish()
     }
 }

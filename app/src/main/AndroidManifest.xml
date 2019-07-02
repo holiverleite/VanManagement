@@ -18,9 +18,10 @@
                 android:name="com.google.android.geo.API_KEY"
                 android:value="@string/google_maps_key" />
 
-        <activity android:name=".UserProfileActivity"></activity>
-        <activity android:name=".DeparturePointActivity"></activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".CreateProfile.UserProfileActivity"></activity>
+        <activity android:name=".CreateProfile.DeparturePointActivity"></activity>
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".Home.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

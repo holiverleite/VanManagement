@@ -1,4 +1,4 @@
-package br.edu.ifsp.scl.vanmanagement
+package br.edu.ifsp.scl.vanmanagement.CreateProfile
 
 import android.app.Activity
 import android.content.Intent
@@ -6,9 +6,9 @@ import android.content.pm.PackageManager
 import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
+import br.edu.ifsp.scl.vanmanagement.R
 import kotlinx.android.synthetic.main.activity_user_profile.*
 
 class UserProfileActivity : AppCompatActivity() {
@@ -20,6 +20,7 @@ class UserProfileActivity : AppCompatActivity() {
 
     fun didTapNextButton(view: View) {
         val departureLocationIntent = Intent(this, DeparturePointActivity::class.java)
+        finish()
         startActivity(departureLocationIntent)
     }
 
@@ -48,7 +49,9 @@ class UserProfileActivity : AppCompatActivity() {
         //Intent to pick image
         val intent = Intent(Intent.ACTION_PICK)
         intent.type = "image/*"
-        startActivityForResult(intent, IMAGE_PICK_CODE)
+        startActivityForResult(intent,
+            IMAGE_PICK_CODE
+        )
     }
 
     //handle requested permission result
