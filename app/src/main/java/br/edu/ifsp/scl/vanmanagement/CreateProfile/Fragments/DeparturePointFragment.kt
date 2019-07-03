@@ -1,4 +1,4 @@
-package br.edu.ifsp.scl.vanmanagement.CreateProfile
+package br.edu.ifsp.scl.vanmanagement.CreateProfile.Fragments
 
 import android.app.Activity
 import android.content.Intent
@@ -12,8 +12,6 @@ import android.support.v4.app.ActivityCompat
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.View
-import br.edu.ifsp.scl.vanmanagement.Home.HomeActivity
-import br.edu.ifsp.scl.vanmanagement.Home.HomeAdapter
 import br.edu.ifsp.scl.vanmanagement.R
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException
 import com.google.android.gms.common.GooglePlayServicesRepairableException
@@ -26,7 +24,7 @@ import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import java.io.IOException
 
-class DeparturePointActivity : AppCompatActivity(), OnMapReadyCallback,
+class DeparturePointFragment : AppCompatActivity(), OnMapReadyCallback,
     GoogleMap.OnMarkerClickListener {
 
     private lateinit var map: GoogleMap
@@ -212,7 +210,7 @@ class DeparturePointActivity : AppCompatActivity(), OnMapReadyCallback,
                 try {
                     // Show the dialog by calling startResolutionForResult(),
                     // and check the result in onActivityResult().
-                    e.startResolutionForResult(this@DeparturePointActivity,
+                    e.startResolutionForResult(this@DeparturePointFragment,
                         REQUEST_CHECK_SETTINGS
                     )
                 } catch (sendEx: IntentSender.SendIntentException) {
@@ -226,7 +224,7 @@ class DeparturePointActivity : AppCompatActivity(), OnMapReadyCallback,
         val builder = PlacePicker.IntentBuilder()
 
         try {
-            startActivityForResult(builder.build(this@DeparturePointActivity),
+            startActivityForResult(builder.build(this@DeparturePointFragment),
                 PLACE_PICKER_REQUEST
             )
         } catch (e: GooglePlayServicesRepairableException) {

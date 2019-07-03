@@ -3,7 +3,7 @@ package br.edu.ifsp.scl.vanmanagement.Home
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import br.edu.ifsp.scl.vanmanagement.MainActivity
+import br.edu.ifsp.scl.vanmanagement.CreateProfile.ProfileMainActivity
 import br.edu.ifsp.scl.vanmanagement.R
 import kotlinx.android.synthetic.main.home.*
 
@@ -17,7 +17,7 @@ class HomeActivity : AppCompatActivity() {
 
         tabs_main.setupWithViewPager(viewpager_main)
 
-        val intent = Intent(this,MainActivity::class.java)
+        val intent = Intent(this,ProfileMainActivity::class.java)
         startActivity(intent)
     }
 }
